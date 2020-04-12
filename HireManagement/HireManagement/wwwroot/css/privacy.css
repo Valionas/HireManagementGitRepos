@@ -1,0 +1,14 @@
+﻿.privacylist {
+    border: 2px solid black;
+    border-radius: 45px;
+    box-shadow: 3px -3px 6px black ;
+    transition:0.5s ;
+ 
+}
+.privacylist:hover{
+    border:2px solid black;
+    border-radius:0px;
+}
+.points{
+    font-size:150%;
+}
