@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/animate.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav style="font-family:Lobster" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav style="font-family:Lobster" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 animated fadeIn">
             <div class="container">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -42,9 +43,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="animated fadeIn border-top footer text-muted">
         <div class="container">
-            &copy; HireManagement made by Valentin Kolev <a class="font-weight-bold" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; HireManagement made by Valentin Kolev <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
