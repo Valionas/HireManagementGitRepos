@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HireManagement.Models;
 using HireManagement.Data;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,7 +20,11 @@ namespace HireManagement.Controllers
             _context = context;
         }
 
-       
+        public async Task<IActionResult> Index()                        
+        {
+            return View(await _context.Workers.ToListAsync());  //Create a list when called
+        }
+
         [HttpGet]
         public ViewResult Create()
         {
