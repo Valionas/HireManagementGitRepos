@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HireManagement.Data;
+using HireManagement.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,7 @@ namespace HireManagement
             services.AddControllersWithViews();
             services.AddDbContext<HireContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            services.AddSingleton<IWorkerRepository, WorkerHolderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
