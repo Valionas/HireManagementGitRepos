@@ -29,7 +29,7 @@ namespace HireManagement
             services.AddControllersWithViews();
             services.AddDbContext<HireContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
-            services.AddSingleton<IWorkerRepository, WorkerHolderRepository>();
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
