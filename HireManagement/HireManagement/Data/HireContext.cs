@@ -1,4 +1,5 @@
 ﻿using HireManagement.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HireManagement.Data
 {
-    public class HireContext:DbContext
+    public class HireContext:IdentityDbContext
     {
         public HireContext(DbContextOptions<HireContext> options) : base(options)
         {
@@ -21,6 +22,7 @@ namespace HireManagement.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Contract>().ToTable("Contract");
             modelBuilder.Entity<Recruitment>().ToTable("Recruitment");           //Changing table names in singular form
             modelBuilder.Entity<Worker>().ToTable("Worker");
