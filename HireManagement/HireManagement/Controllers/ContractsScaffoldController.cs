@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HireManagement.Data;
 using HireManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HireManagement.Controllers
 {
+    
     public class ContractsScaffoldController : Controller
     {
         private readonly HireContext _context;
@@ -20,12 +22,14 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts
+     
         public async Task<IActionResult> Index()
         {
             return View(await _context.Contracts.ToListAsync());
         }
 
         // GET: Contracts/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +48,7 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Create
+       
         public IActionResult Create()
         {
             return View();
@@ -52,6 +57,7 @@ namespace HireManagement.Controllers
         // POST: Contracts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ContractID,ContractName,ExpiryDate,Reward")] Contract contract)
@@ -66,6 +72,7 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Edit/5
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -84,6 +91,7 @@ namespace HireManagement.Controllers
         // POST: Contracts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ContractID,ContractName,ExpiryDate,Reward")] Contract contract)
@@ -117,6 +125,7 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Delete/5
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +144,7 @@ namespace HireManagement.Controllers
         }
 
         // POST: Contracts/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
