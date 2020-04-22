@@ -23,9 +23,19 @@ namespace HireManagement.Controllers
 
         // GET: Contracts
      
-        public async Task<IActionResult> Index()
+       
+        public async Task<IActionResult> Index(string searchText)
         {
-            return View(await _context.Contracts.ToListAsync());
+            var contracts = from c in _context.Contracts
+                            select c;
+
+
+            if(!String.IsNullOrEmpty(searchText))
+            {
+                contracts = contracts.Where(c => c.ContractName.Contains(searchText));
+            }
+
+            return View(await contracts.ToListAsync());
         }
 
         // GET: Contracts/Details/5

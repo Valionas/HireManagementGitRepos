@@ -5,7 +5,12 @@
 }
 
 <h1>Index</h1>
-
+<form asp-controller="ContractsScaffold" asp-action="Index" method="get">
+    <p>
+        Search: <input type="text" name="searchText">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>

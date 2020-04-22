@@ -22,10 +22,20 @@ namespace HireManagement.Controllers
         }
 
         // GET: Workers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchText)
         {
-            return View(await _context.Workers.ToListAsync());
+             var workers = from w in _context.Workers
+                            select w;
+
+
+            if(!String.IsNullOrEmpty(searchText))
+            {
+                workers = workers.Where(c => c.FirstName.Contains(searchText));
+            }
+
+            return View(await workers.ToListAsync());
         }
+        
 
         // GET: Workers/Details/5
         public async Task<IActionResult> Details(int? id)
