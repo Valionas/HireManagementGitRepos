@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HireManagement.Data;
 using HireManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HireManagement.Controllers
 {
+    [Authorize]
     public class WorkersScaffoldController : Controller
     {
         private readonly HireContext _context;
