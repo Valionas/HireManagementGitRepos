@@ -8,7 +8,7 @@ namespace HireManagement.ViewModels
 {
     public class CreateRoleViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Role already in the database")]
         public string RoleName { get; set; }
     }
 }
