@@ -26,12 +26,14 @@ namespace HireManagement.Controllers
         {
              var workers = from w in _context.Workers
                             select w;
-
+           
 
             if(!String.IsNullOrEmpty(searchText))
             {
                 workers = workers.Where(c => c.FirstName.Contains(searchText));
             }
+
+            
 
             return View(await workers.ToListAsync());
         }

@@ -4,14 +4,16 @@ using HireManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HireManagement.Migrations
 {
     [DbContext(typeof(HireContext))]
-    partial class HireContextModelSnapshot : ModelSnapshot
+    [Migration("20200509104638_Extend_IdentityUser")]
+    partial class Extend_IdentityUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,9 +75,6 @@ namespace HireManagement.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
-
-                    b.Property<string>("UserNickName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

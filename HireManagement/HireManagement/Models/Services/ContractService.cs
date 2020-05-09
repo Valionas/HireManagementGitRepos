@@ -7,5 +7,6 @@ namespace HireManagement.Models
 {
     public class ContractService
     {
+
     }
 }

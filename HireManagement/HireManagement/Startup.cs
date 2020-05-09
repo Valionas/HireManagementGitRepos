@@ -30,7 +30,7 @@ namespace HireManagement
             services.AddControllersWithViews();
             services.AddDbContext<HireContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<HireContext>();
         }
 

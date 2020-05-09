@@ -9,6 +9,8 @@ namespace HireManagement.Models.RegisterModels
     public class RegisterModel
     {
         [Required]
+        public string UserNickName { get; set; }
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -21,5 +23,8 @@ namespace HireManagement.Models.RegisterModels
         [Compare("Password",
             ErrorMessage = "Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        public string City { get; set; }
+
     }
 }

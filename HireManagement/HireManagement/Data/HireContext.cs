@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HireManagement.Data
 {
-    public class HireContext:IdentityDbContext
+    public class HireContext:IdentityDbContext<ApplicationUser>
     {
         public HireContext(DbContextOptions<HireContext> options) : base(options)
         {
@@ -18,7 +18,7 @@ namespace HireManagement.Data
         public DbSet<Contract> Contracts { get; set; }                    
         public DbSet<Recruitment> Recruitments { get; set; }
         public DbSet<Worker> Workers { get; set; }
-        public object Contract { get; internal set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
