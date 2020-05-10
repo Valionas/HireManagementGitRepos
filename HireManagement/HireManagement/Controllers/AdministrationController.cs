@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HireManagement.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;

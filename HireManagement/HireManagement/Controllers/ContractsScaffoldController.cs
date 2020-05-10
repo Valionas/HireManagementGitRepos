@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HireManagement.Data;
 using HireManagement.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace HireManagement.Controllers
 {
@@ -82,7 +83,7 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Edit/5
-     
+        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -135,7 +136,8 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Delete/5
-      
+        [Authorize(Roles="Moderator")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -154,7 +156,8 @@ namespace HireManagement.Controllers
         }
 
         // POST: Contracts/Delete/5
-       
+        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

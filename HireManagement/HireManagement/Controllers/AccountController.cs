@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using HireManagement.Models;
 using HireManagement.Models.RegisterModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,11 +30,11 @@ namespace HireManagement.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email, 
+                    UserName = model.Email,
                     Email = model.Email,
                     City = model.City,
                     UserNickName = model.UserNickName
@@ -41,13 +42,13 @@ namespace HireManagement.Controllers
                 };
                 var result = await userManager.CreateAsync(user, model.Password);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
-                
-                foreach(var error in result.Errors)
+
+                foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
@@ -78,7 +79,7 @@ namespace HireManagement.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (!string.IsNullOrEmpty(returnUrl)&&Url.IsLocalUrl(returnUrl))
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
@@ -86,13 +87,20 @@ namespace HireManagement.Controllers
                     {
                         return RedirectToAction("index", "home");
                     }
-                  
+
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
 
             return View(model);
+
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

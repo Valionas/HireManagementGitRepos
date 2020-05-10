@@ -32,6 +32,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="WorkersScaffold" asp-action="Index">View Workers</a>
                             </li>
+
                         }
                         else
                         {
@@ -43,11 +44,16 @@
                             </li>
                         }
 
-                    
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="ContactUs">ContactUs</a>
                         </li>
-
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {                 
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Administration" asp-action="ListRoles">Admin Panel</a>
+                                </li>                       
+                        }
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
                         @if (signInManager.IsSignedIn(User))
