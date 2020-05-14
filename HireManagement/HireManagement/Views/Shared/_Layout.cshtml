@@ -49,10 +49,19 @@
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="ContactUs">ContactUs</a>
                         </li>
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                        {                 
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Administration" asp-action="ListRoles">Admin Panel</a>
-                                </li>                       
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Admin Panel
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Administration"
+                                       asp-action="ListUsers">Manage Users</a>
+                                    <a class="dropdown-item" asp-controller="Administration"
+                                       asp-action="ListRoles">Roles</a>
+                                </div>
+                            </li>
                         }
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
