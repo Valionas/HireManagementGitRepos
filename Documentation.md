@@ -1,38 +1,35 @@
 # HireManagementGitRepos
  ASP.Net Project by Valentin Kolev
 ---------------------------------------------------------------------------------------------------
-HireManagement представлява web приложение, в което всеки потребител може да създава договори и да вкарва своите работници в системата. 
-Наподобява някои от добре познатите ни сайтове с обяви за работа , като jobs.bg.
-При първоначално стартиране, всички анонимни потребители, които нямат регистрация, ще виждат само рекламни страници.
-В тях е описан накратко проектът и неговата дейност чрез снимков материал и текст.
-Използвана е Animate CSS библиотека, чрез която са създадени анимациите и е придадена динамика при зареждане на елементите.
-Включени са както обикновени модели , така е View-модели (при тях е използвана информация, която е нужна за самия изглед).
-В отделна папка са съхранение моделите, отговарящи за регистрацията и влизането в приложението ( login ).
-Имаме роля Модератор, който може да използва CRUD операции върху всички публикации, но няма достъп до администраторския панел, който е предназначен само за админ.
-Администраторът е с роля Admin и само той има достъп до отделна секция , наречена Admin Panel. В нея той може да създава и променя както роли, така и да създава от там потребители.
-Само администраторът има пълни права над всички CRUD операции и може да изтрие всяка една новосъздадена публикация от тип договор/работник.
-При опит да се достъпи админ панелът, потребителят ще получи съобщение със червен знак, забраняващ достъпа му.
-Ако анонимен потребител се опита да достъпи някоя функционална част от приложението, той ще бъде пренасочен към логин менюто, в което да попълни своите данни.
-За Front-End стилизирането е използван предимно Bootstrap CSS библиотека, снимков материал от интернет с научна цел и специфичен шрифт от GoogleFonts.
+#Roles
+There are 4 roles:
+ a) Admin - has access to every part of the application
+ b) Moderator - can perform CRUD operation, can't acces Admin panel.
+ c) User - every person with successful registration. Can perform his own CRUD operations, can't access other users' publications.
+ d) Anonymous - visitors , without registration.
+
+#Layers
+There are 2 main Layers
+ a) Anonymous layer - visual representation of the application.
+ b) Authenticated layer - includes the functionality of the application.
+ 
+#The concept 
+HireManagement is an ASP.NET project which gives people the oportunity to publish work offers, just like the labour market.
+It has 2 sections - Workers and Contracts. In both sections users can create their own contract or add their own worker on the market.
+If someone else is interested in them, he can easily contact them via the email adress or phone number.
+It is created for those who have their own business or want to get employeed as soon as possible.
+If something happens, users can instantly contact the Admin through ContactUs tab.
+
+#Type of security
+*Authentication - the person must be logged in to use the functionality of the application.
+*Authorization - the person must have the role to perform the action
+*User protected data - the person can only modify his own publications.
+
+#Created by using
+*Bootstrap
+*Animate.CSS
+*ASP.Net Core 3.1
+*Entity Framework Core 3.1
 
 
-Имаме модели за :
-	*Договори 
-	*Работниците -
-	*Разширено действие на IdentityUser
-
-Моделите за изгледи са:
-	*Модел , които при повторно създаване, изписва низ от тип грешка 
-	*Обработка/смяна на роля 
-	*Обработка на съществуващ потребител 
-	*Съдържащ информация за ролята 
-
-Контролерите , които съдържа приложението са:
-	*Отговарящ за профилите на потребителите 
-	*Администраторски контролер 
-	*Отговарящ за всички CRUD операции за договори  
-	*Отговарящ за всички CRUD операции за работници 
-	*Начален (Home) контролер, в който са записани изгледите за анонимните потребители.
-
-Проектът е с научна цел за защита при семестриален изпит по дисциплината Уеб програмиране с ASP.Net . 
 --------------------------------------------------------------------------------------------------------
