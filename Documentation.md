@@ -15,12 +15,15 @@ There are 2 main Layers
 
 ## 3. The concept 
 HireManagement is an ASP.NET project which gives people the oportunity to publish work offers, just like the labour market.
-It has 2 sections - Workers and Contracts. In both sections users can create their own contract or add their own worker on the market.
+It has 2 sections - Workers and Contracts.
+
+In both sections users can create their own contract or add their own worker on the market.
 If someone else is interested in them, he can easily contact them via the email adress or phone number.
 It is created for those who have their own business or want to get employeed as soon as possible.
 If something happens, users can instantly contact the Admin through ContactUs tab.
 
-## 4. Type of security
+
+## 4. Type of used security methods
 - Authentication - the person must be logged in to use the functionality of the application.
 - Authorization - the person must have the role to perform the action
 - User protected data - the person can only modify his own publications.
