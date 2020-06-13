@@ -15,9 +15,8 @@ There are 2 main Layers
 
 ## 3. The concept 
 HireManagement is an ASP.NET project which gives people the oportunity to publish work offers, just like the labour market.
-It has 2 sections - Workers and Contracts. 
+It has 2 sections - Workers and Contracts. In the first one , users can recreate people , by publishing personal data. In the second one , just like the offers on the internet, people can browse through different options or create their own when they need a helping hand.
 
-In the first one , users can recreate people , by publishing personal data. In the second one , just like the offers on the internet, people can browse through different options or create their own when they need a helping hand.
 In both sections users can create their own contract or add their own worker on the market.
 If someone else is interested in them, he can easily contact them via the email adress or phone number.
 It is created for those who have their own business or want to get employeed as soon as possible.
