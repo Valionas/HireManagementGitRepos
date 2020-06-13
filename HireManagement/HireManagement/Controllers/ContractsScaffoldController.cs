@@ -9,6 +9,8 @@ using HireManagement.Data;
 using HireManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 
 namespace HireManagement.Controllers
 {
@@ -22,6 +24,7 @@ namespace HireManagement.Controllers
             _context = context;
         }
 
+      
         // GET: Contracts
      
        
@@ -31,7 +34,7 @@ namespace HireManagement.Controllers
                             select c;
 
 
-            if(!String.IsNullOrEmpty(searchText))
+            if (!String.IsNullOrEmpty(searchText))
             {
                 contracts = contracts.Where(c => c.ContractName.Contains(searchText));
             }
@@ -59,7 +62,7 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Create
-     
+
         public IActionResult Create()
         {
             return View();
@@ -68,13 +71,15 @@ namespace HireManagement.Controllers
         // POST: Contracts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ContractID,ContractName,ExpiryDate,Reward")] Contract contract)
+        public async Task<IActionResult> Create([Bind("ContractID,ContractName,ExpiryDate,Reward,Information,Preference,EmployerEmail")] Contract contract)
         {
             if (ModelState.IsValid)
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                contract.UserID = userId;
                 _context.Add(contract);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -83,7 +88,7 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Edit/5
-        
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,7 +107,7 @@ namespace HireManagement.Controllers
         // POST: Contracts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ContractID,ContractName,ExpiryDate,Reward")] Contract contract)
@@ -136,8 +141,7 @@ namespace HireManagement.Controllers
         }
 
         // GET: Contracts/Delete/5
-        [Authorize(Roles="Moderator")]
-        [Authorize(Roles ="Admin")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -153,11 +157,13 @@ namespace HireManagement.Controllers
             }
 
             return View(contract);
+
+
+           
         }
 
         // POST: Contracts/Delete/5
-        [Authorize(Roles = "Moderator")]
-        [Authorize(Roles = "Admin")]
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

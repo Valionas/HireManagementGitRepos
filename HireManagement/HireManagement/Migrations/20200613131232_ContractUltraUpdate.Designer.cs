@@ -4,14 +4,16 @@ using HireManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HireManagement.Migrations
 {
     [DbContext(typeof(HireContext))]
-    partial class HireContextModelSnapshot : ModelSnapshot
+    [Migration("20200613131232_ContractUltraUpdate")]
+    partial class ContractUltraUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,10 +102,6 @@ namespace HireManagement.Migrations
                     b.Property<string>("ContractName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmployerEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
 
@@ -142,9 +140,6 @@ namespace HireManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmployedOnPosition")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(40)")
@@ -157,9 +152,6 @@ namespace HireManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");

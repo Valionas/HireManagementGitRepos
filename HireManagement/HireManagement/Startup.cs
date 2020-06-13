@@ -32,6 +32,8 @@ namespace HireManagement
         options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<HireContext>();
+      
+    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

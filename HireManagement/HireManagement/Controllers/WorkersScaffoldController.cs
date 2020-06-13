@@ -15,10 +15,12 @@ namespace HireManagement.Controllers
     public class WorkersScaffoldController : Controller
     {
         private readonly HireContext _context;
+      
 
         public WorkersScaffoldController(HireContext context)
         {
             _context = context;
+     
         }
 
         // GET: Workers
@@ -26,7 +28,8 @@ namespace HireManagement.Controllers
         {
              var workers = from w in _context.Workers
                             select w;
-           
+            
+            
 
             if(!String.IsNullOrEmpty(searchText))
             {
@@ -68,7 +71,7 @@ namespace HireManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Age,City,Email,JoinedDate")] Worker worker)
+        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Age,City,Email,EmployedOnPosition,PhoneNumber,JoinedDate")] Worker worker)
         {
             if (ModelState.IsValid)
             {

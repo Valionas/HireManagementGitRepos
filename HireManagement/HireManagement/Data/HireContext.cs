@@ -16,7 +16,7 @@ namespace HireManagement.Data
         }
 
         public DbSet<Contract> Contracts { get; set; }                    
-        public DbSet<Recruitment> Recruitments { get; set; }
+    
         public DbSet<Worker> Workers { get; set; }
 
 
@@ -24,7 +24,6 @@ namespace HireManagement.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Contract>().ToTable("Contract");
-            modelBuilder.Entity<Recruitment>().ToTable("Recruitment");           //Changing table names in singular form
             modelBuilder.Entity<Worker>().ToTable("Worker");
         }
 

@@ -25,8 +25,12 @@ namespace HireManagement.Models
         ErrorMessage = "Invalid email format")]
         public string Email { get; set; }
 
+        public string PhoneNumber { get; set; }
+        public string EmployedOnPosition { get; set; }
+
         public DateTime JoinedDate { get; set; }
 
-        public ICollection<Recruitment> Recruitments { get; set; }
+        public string UserID { get;set; }
+  
     }
 }

@@ -4,14 +4,16 @@ using HireManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HireManagement.Migrations
 {
     [DbContext(typeof(HireContext))]
-    partial class HireContextModelSnapshot : ModelSnapshot
+    [Migration("20200521163134_UserIDContractImplement")]
+    partial class UserIDContractImplement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,18 +102,8 @@ namespace HireManagement.Migrations
                     b.Property<string>("ContractName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmployerEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Information")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Preference")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Reward")
                         .HasColumnType("float");
@@ -122,6 +114,31 @@ namespace HireManagement.Migrations
                     b.HasKey("ContractID");
 
                     b.ToTable("Contract");
+                });
+
+            modelBuilder.Entity("HireManagement.Models.Recruitment", b =>
+                {
+                    b.Property<int>("RecruitmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ContractID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Review")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkerID")
+                        .HasColumnType("int");
+
+                    b.HasKey("RecruitmentID");
+
+                    b.HasIndex("ContractID");
+
+                    b.HasIndex("WorkerID");
+
+                    b.ToTable("Recruitment");
                 });
 
             modelBuilder.Entity("HireManagement.Models.Worker", b =>
@@ -142,9 +159,6 @@ namespace HireManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmployedOnPosition")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(40)")
@@ -157,12 +171,6 @@ namespace HireManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserID")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -298,6 +306,21 @@ namespace HireManagement.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("HireManagement.Models.Recruitment", b =>
+                {
+                    b.HasOne("HireManagement.Models.Contract", "Contract")
+                        .WithMany("Recruitments")
+                        .HasForeignKey("ContractID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HireManagement.Models.Worker", "Worker")
+                        .WithMany("Recruitments")
+                        .HasForeignKey("WorkerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
