@@ -143,7 +143,7 @@ namespace HireManagement.Migrations
 
             modelBuilder.Entity("HireManagement.Models.Worker", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("WorkerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -175,7 +175,7 @@ namespace HireManagement.Migrations
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("WorkerID");
 
                     b.ToTable("Worker");
                 });

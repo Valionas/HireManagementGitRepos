@@ -6,50 +6,48 @@
 <center>
 <h1>Details</h1>
 
-<div class="bg-white p-3">
     <h4>Contract</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-2">
+    <dl class="row bg-white round">
+        <dt class="col-6">
             @Html.DisplayNameFor(model => model.ContractName)
         </dt>
-        <dd class="col-10">
+        <dd class="col-6">
             @Html.DisplayFor(model => model.ContractName)
         </dd>
-        <dt class="col-2">
+        <dt class="col-6">
             @Html.DisplayNameFor(model => model.EmployerEmail)
         </dt>
-        <dd class="col-10">
+        <dd class="col-6">
             @Html.DisplayFor(model => model.EmployerEmail)
         </dd>
-        <dt class="col-2">
+        <dt class="col-6">
             @Html.DisplayNameFor(model => model.ExpiryDate)
         </dt>
-        <dd class="col-s10">
+        <dd class="col-6">
             @Html.DisplayFor(model => model.ExpiryDate)
         </dd>
-        <dt class="col-2">
+        <dt class="col-6">
             @Html.DisplayNameFor(model => model.Reward)
         </dt>
-        <dd class="col-10">
+        <dd class="col-6">
             @Html.DisplayFor(model => model.Reward)
         </dd>
-        <dt class="col-2">
-            @Html.DisplayNameFor(model => model.Information)
-        </dt>
-        <dd class="col-10">
-            @Html.DisplayFor(model => model.Information)
-        </dd>
-        <dt class="col-2">
+        <dt class="col-6">
             @Html.DisplayNameFor(model => model.Preference)
         </dt>
-        <dd class="col-10">
+        <dd class="col-6">
             @Html.DisplayFor(model => model.Preference)
         </dd>
+        <dt class="col-6">
+            @Html.DisplayNameFor(model => model.Information)
+        </dt>
+        <dd class="col-6">
+            @Html.DisplayFor(model => model.Information)
+        </dd>
     </dl>
-</div>
 <br />
 <div>
-    <a asp-action="Index" class="btn-dark  rounded">Back to List</a>
+    <a class="bg-white text-black rounded" asp-action="Index">Back to List</a>
 </div>
 </center>

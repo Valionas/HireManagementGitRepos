@@ -8,7 +8,7 @@ namespace HireManagement.Models
 {
     public class Worker
     {   
-        public int ID { get; set; }
+        public int WorkerID { get; set; }
         [Required]
         [MaxLength(40)]
         public string FirstName { get; set; }

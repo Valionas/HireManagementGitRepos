@@ -51,7 +51,7 @@ namespace HireManagement.Controllers
             }
 
             var worker = await _context.Workers
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.WorkerID == id);
             if (worker == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace HireManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Age,City,Email,EmployedOnPosition,PhoneNumber,JoinedDate")] Worker worker)
+        public async Task<IActionResult> Create([Bind("WorkerID,FirstName,LastName,Age,City,Email,EmployedOnPosition,PhoneNumber,JoinedDate")] Worker worker)
         {
             if (ModelState.IsValid)
             {
@@ -103,9 +103,9 @@ namespace HireManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Age,City,Email,JoinedDate")] Worker worker)
+        public async Task<IActionResult> Edit(int id, [Bind("WorkerID,FirstName,LastName,Age,City,Email,JoinedDate")] Worker worker)
         {
-            if (id != worker.ID)
+            if (id != worker.WorkerID)
             {
                 return NotFound();
             }
@@ -119,7 +119,7 @@ namespace HireManagement.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!WorkerExists(worker.ID))
+                    if (!WorkerExists(worker.WorkerID))
                     {
                         return NotFound();
                     }
@@ -142,7 +142,7 @@ namespace HireManagement.Controllers
             }
 
             var worker = await _context.Workers
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.WorkerID == id);
             if (worker == null)
             {
                 return NotFound();
@@ -164,7 +164,7 @@ namespace HireManagement.Controllers
 
         private bool WorkerExists(int id)
         {
-            return _context.Workers.Any(e => e.ID == id);
+            return _context.Workers.Any(e => e.WorkerID == id);
         }
     }
 }

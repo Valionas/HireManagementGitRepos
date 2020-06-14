@@ -63,7 +63,7 @@ namespace HireManagement.Migrations
                         name: "FK_Recruitment_Worker_WorkerID",
                         column: x => x.WorkerID,
                         principalTable: "Worker",
-                        principalColumn: "ID",
+                        principalColumn: "WorkerID",
                         onDelete: ReferentialAction.Cascade);
                 });
 

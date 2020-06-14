@@ -63,13 +63,13 @@
                 <td>
                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Moderator") || User.IsInRole("Admin") || item.UserID == this.User.FindFirstValue(ClaimTypes.NameIdentifier))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.ID">| Edit |</a>
+                        <a asp-action="Edit" asp-route-id="@item.WorkerID">| Edit |</a>
                     }
-                    <a asp-action="Details" asp-route-id="@item.ID"> View </a>
+                    <a asp-action="Details" asp-route-id="@item.WorkerID"> View </a>
 
-                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Moderator")||item.UserID == this.User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin") || User.IsInRole("Moderator") || item.UserID == this.User.FindFirstValue(ClaimTypes.NameIdentifier))
                     {
-                        <a asp-action="Delete" asp-route-id="@item.ID">| Delete |</a>
+                        <a asp-action="Delete" asp-route-id="@item.WorkerID">| Delete |</a>
                     }
 
                 </td>

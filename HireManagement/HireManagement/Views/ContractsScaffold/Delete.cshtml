@@ -4,6 +4,7 @@
     ViewData["Title"] = "Delete";
 }
     <center>
+        <div class="row bg-white rounded text-center col-6">
         <h1>Delete</h1>
 
         <h3>Are you sure you want to delete this?</h3>
@@ -46,7 +47,8 @@
             <form asp-action="Delete">
                 <input type="hidden" asp-for="ContractID" />
                 <input type="submit" value="Delete" class="btn btn-danger" /> |
-                <a asp-action="Index">Back to List</a>
+                <a class="bg-white text-black rounded" asp-action="Index">Back to List</a>
             </form>
+        </div>
         </div>
     </center>
