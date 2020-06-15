@@ -16,6 +16,7 @@ namespace HireManagement.Models
         [Required]
         public DateTime ExpiryDate { get; set; }
         [Required]
+        [RegularExpression("[0-9]{1,100000}", ErrorMessage = "Insert a valid sum")]
         public double Reward { get; set; }
         [Required]
         [MaxLength(200)]
