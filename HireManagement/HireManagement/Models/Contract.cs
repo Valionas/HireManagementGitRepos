@@ -16,7 +16,6 @@ namespace HireManagement.Models
         [Required]
         public DateTime ExpiryDate { get; set; }
         [Required]
-        [MaxLength(10)]
         public double Reward { get; set; }
         [Required]
         [MaxLength(200)]

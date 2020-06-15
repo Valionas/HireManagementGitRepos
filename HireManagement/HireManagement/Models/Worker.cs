@@ -16,7 +16,7 @@ namespace HireManagement.Models
         [MaxLength(40)]
         public string LastName { get; set; }
         [Required]
-        [MaxLength(3)]
+        [RegularExpression("[0-9]{1,3}", ErrorMessage = "Your age must be between 18-100 years")]
         public int Age { get; set; }
         [Required]
         [MaxLength(100)]
@@ -26,7 +26,7 @@ namespace HireManagement.Models
         ErrorMessage = "Invalid email format")]
         public string Email { get; set; }
         [Required]
-        [MaxLength(15)]
+       
         public string PhoneNumber { get; set; }
         [Required]
         [MaxLength(30)]
